@@ -1,4 +1,4 @@
-package com.javier;
+package com.javier.vista;
 
 import javax.swing.*;
 
@@ -14,6 +14,7 @@ public class Ventana extends JFrame {
         this.setVisible(true);
         this.setFocusable(true);
         this.requestFocusInWindow();
+
 
     }
 }

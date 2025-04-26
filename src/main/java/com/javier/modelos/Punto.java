@@ -1,4 +1,4 @@
-package com.javier;
+package com.javier.modelos;
 
 public class Punto {
     private int x;
@@ -9,7 +9,7 @@ public class Punto {
         this.y = y;
     }
 
-    
+
     public int getX() {
         return x;
     }
@@ -30,4 +30,5 @@ public class Punto {
     public boolean equals(Punto other) {
         return this.x == other.x && this.y == other.y;
     }
+
 }

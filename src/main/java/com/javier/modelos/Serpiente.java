@@ -1,7 +1,11 @@
-package com.javier;
+package com.javier.modelos;
+
+import com.javier.utils.Config;
+import com.javier.utils.Orientacion;
 
 import java.awt.*;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class Serpiente {
@@ -31,6 +35,10 @@ public class Serpiente {
 
     public Punto getCabeza() {
         return serpiente.getFirst();
+    }
+
+    public List<Punto> getCuerpo() {
+        return serpiente.subList(1, serpiente.size());
     }
 
     public void draw(Graphics g) {

@@ -1,4 +1,8 @@
-package com.javier;
+package com.javier.vista;
+
+import com.javier.utils.Config;
+import com.javier.modelos.GameObject;
+import com.javier.modelos.Serpiente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +14,6 @@ public class SnakeVista extends JPanel {
     private final List<GameObject> comp;
 
     public SnakeVista(Serpiente s, List<GameObject> o) {
-        super();
         this.s = s;
         this.comp = o;
     }

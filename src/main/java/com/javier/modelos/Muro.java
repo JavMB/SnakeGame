@@ -1,4 +1,7 @@
-package com.javier;
+package com.javier.modelos;
+
+import com.javier.utils.Config;
+import com.javier.utils.Orientacion;
 
 import java.awt.*;
 
@@ -11,6 +14,10 @@ public class Muro extends GameObject {
     public Muro(int x, int y, Orientacion orientacion) {
         super(x, y);
         this.orientacion = orientacion;
+    }
+
+    public Orientacion getOrientacion() {
+        return orientacion;
     }
 
     @Override

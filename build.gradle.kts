@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    application
 }
 
 group = "com.javier"
@@ -14,6 +15,14 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
-tasks.test {
-    useJUnitPlatform()
+application {
+    mainClass.set("com.javier.Main")
+}
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.javier.Main"
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(sourceSets.main.get().output)
 }

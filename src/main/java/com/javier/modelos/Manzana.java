@@ -1,4 +1,4 @@
-package com.javier;
+package com.javier.modelos;
 
 import java.awt.*;
 import java.util.Random;
@@ -12,11 +12,6 @@ public class Manzana extends GameObject {
         isEaten = false;
         setPosition(new Punto(rnd.nextInt(20), rnd.nextInt(15)));
     }
-
-    public void setEaten() {
-        isEaten = true;
-    }
-
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.red);

@@ -1,4 +1,8 @@
-package com.javier;
+package com.javier.controlador;
+
+import com.javier.modelos.*;
+import com.javier.utils.Orientacion;
+import com.javier.vista.SnakeVista;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
@@ -30,26 +34,48 @@ public class SnakeControlador {
         timer.start();
     }
 
-    public void eventos() {
+    private void eventos() {
         boolean comio = false;
+        chocarCuerpo();
+
+
         for (GameObject objeto : obj) {
             if (serpiente.getCabeza().equals(objeto.getPosition())) {
-                if (objeto instanceof Muro) {
-                    timer.stop();
-                } else if (objeto instanceof Manzana) {
-                    serpiente.mover(orientacion, true);
-                    ((Manzana) objeto).regenerarManzana();
-//                    comio = true;
-                }
 
+                if (objeto instanceof Muro) {
+                    if (orientacion.equals(((Muro) objeto).getOrientacion())) {
+                        gameover();
+                    }
+
+                } else if (objeto instanceof Manzana) {
+                    ((Manzana) objeto).regenerarManzana();
+                    comio = true;
+                }
             }
         }
-
         serpiente.mover(orientacion, comio);
-
-
     }
 
+    public void chocarCuerpo() {
+        List<Punto> cuerpo = serpiente.getCuerpo();
+        for (Punto p : cuerpo) {
+            if (serpiente.getCabeza().equals(p)) {
+                gameover();
+            }
+        }
+    }
+
+
+    private void cambiarDireccion(Orientacion orientacion) {
+        if ((this.orientacion.equals(Orientacion.ARRIBA) && orientacion.equals(Orientacion.ABAJO)) || (this.orientacion.equals(Orientacion.ABAJO) && orientacion.equals(Orientacion.ARRIBA))) {
+            gameover();
+        } else if ((this.orientacion.equals(Orientacion.IZQUIERDA) && orientacion.equals(Orientacion.DERECHA)) || (this.orientacion.equals(Orientacion.DERECHA) && orientacion.equals(Orientacion.IZQUIERDA))) {
+            gameover();
+        } else {
+            this.orientacion = orientacion;
+        }
+
+    }
 
     public KeyListener getKeyListener() {
         return new KeyAdapter() {
@@ -65,8 +91,10 @@ public class SnakeControlador {
         };
     }
 
-    private void cambiarDireccion(Orientacion orientacion) {
-        this.orientacion = orientacion;
+    private void gameover() {
+        timer.stop();
+        JOptionPane.showMessageDialog(panel, "¡Game Over!", "Fin del juego", JOptionPane.INFORMATION_MESSAGE);
+
     }
 
 

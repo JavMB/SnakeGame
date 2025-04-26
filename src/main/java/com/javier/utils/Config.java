@@ -1,4 +1,4 @@
-package com.javier;
+package com.javier.utils;
 
 import java.awt.*;
 
